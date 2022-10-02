@@ -9,19 +9,19 @@ DESTINATION_BRANCH=$4
 
 if ! echo $SOURCE_REPO | grep -Eq ':|@|\.git\/?$'; then
   if [[ -n "$SSH_PRIVATE_KEY" || -n "$SOURCE_SSH_PRIVATE_KEY" ]]; then
-    SOURCE_REPO="git@github.com:${SOURCE_REPO}.git"
+    SOURCE_REPO="{SOURCE_REPO}"
     GIT_SSH_COMMAND="ssh -v"
   else
-    SOURCE_REPO="https://github.com/${SOURCE_REPO}.git"
+    SOURCE_REPO="${SOURCE_REPO}"
   fi
 fi
 
 if ! echo $DESTINATION_REPO | grep -Eq ':|@|\.git\/?$'; then
   if [[ -n "$SSH_PRIVATE_KEY" || -n "$DESTINATION_SSH_PRIVATE_KEY" ]]; then
-    DESTINATION_REPO="git@github.com:${DESTINATION_REPO}.git"
+    DESTINATION_REPO="${DESTINATION_REPO}"
     GIT_SSH_COMMAND="ssh -v"
   else
-    DESTINATION_REPO="https://github.com/${DESTINATION_REPO}.git"
+    DESTINATION_REPO="${DESTINATION_REPO}"
   fi
 fi
 
